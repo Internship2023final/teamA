@@ -1,18 +1,11 @@
-#VRML_SIM R2022b utf8
+#VRML_SIM R2023b utf8
 
 IMPORTABLE EXTERNPROTO "../protos/RoboCupBackground.proto"
 IMPORTABLE EXTERNPROTO "../protos/RobocupSoccerField.proto"
-IMPORTABLE EXTERNPROTO "../protos/RobocupTexturedSoccerBall.proto"
 IMPORTABLE EXTERNPROTO "../protos/lighting/RoboCupMainLight.proto"
 IMPORTABLE EXTERNPROTO "../protos/lighting/RoboCupOffLight.proto"
 IMPORTABLE EXTERNPROTO "../protos/lighting/RoboCupTopLight.proto"
-
-IMPORTABLE EXTERNPROTO "../protos/robots/RoboCupRobot/RobocupRobot.proto"
-IMPORTABLE EXTERNPROTO "../protos/robots/bitbots/WolfgangRobocup/WolfgangRobocup.proto"
-IMPORTABLE EXTERNPROTO "../protos/robots/itandroids/Chape/ChapeRobocup.proto"
-IMPORTABLE EXTERNPROTO "../protos/robots/nubots/NUgus/NUgus.proto"
-IMPORTABLE EXTERNPROTO "../protos/robots/utra/BezRobocup/BezRobocup.proto"
-# IMPORTABLE EXTERNPROTO "../protos/robots/utra/Bez2Robocup/Bez2Robocup.proto"
+EXTERNPROTO "../protos/SAHRV74/SAHRV74.proto"
 
 WorldInfo {
   info [
@@ -48,23 +41,20 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.175077 -0.367436 0.9134 5.32156
-  position -9.61058 11.1227 5.86
+  orientation -0.17508043773595672 -0.36744321481376185 0.9134179351258181 5.32156
+  position -10.536795125471848 12.264590004007772 6.44513741322727
 }
-
-RobocupSoccerField
-{
+RobocupSoccerField {
   size "kid"
 }
-
-RoboCupMainLight
-{}
-
-RoboCupOffLight
-{}
-
-RoboCupTopLight
-{}
-
-RoboCupBackground
-{}
+RoboCupMainLight {
+}
+RoboCupOffLight {
+}
+RoboCupTopLight {
+}
+RoboCupBackground {
+}
+SAHRV74 {
+  translation -1.5 0 0.4
+}
