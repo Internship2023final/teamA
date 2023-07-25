@@ -1,5 +1,5 @@
-from controller import Robot
-from math import pi
+from controller import Supervisor
+from math import pi, sqrt
 import math
 import cv2
 import numpy as np
@@ -13,28 +13,36 @@ def deg2rad(deg):
 def rad2deg(rad):
     return rad / pi * 180
 
+def dist_meas():
+    pos = gps.getValues()
+    X = [0, 0, 0]
+    dist = sqrt(abs(pos[0] - X[0])**2 + abs(pos[1] - X[1])**2)
+    print("Distance from ball is: " + str(round(dist, 2)))
+    return dist
+    
 #Robot and devices initialization
-robot = Robot()
+robot = Supervisor()
 
 camera = robot.getDevice("right_camera")
 head_pitch = robot.getDevice("head_pitch")
 head_yaw = robot.getDevice("head_yaw")
 head_pitch_sensor = robot.getDevice("head_pitch_sensor")
 head_yaw_sensor = robot.getDevice("head_yaw_sensor")
+gps = robot.getDevice("gps")
 
 timestep = int(robot.getBasicTimeStep())
-
 
 #Enabling devices
 camera.enable(timestep)
 head_yaw_sensor.enable(timestep)
 head_pitch_sensor.enable(timestep)
-
+gps.enable(timestep)
 
 #initial head rotation rate of change
 Y = -2*pi/120
 
 while robot.step(timestep) != -1:
+    dist_meas()
     camera_data = camera.getImage()
     frame = np.frombuffer(camera_data, np.uint8).reshape(camera.getHeight(), camera.getWidth(), 4)
     
